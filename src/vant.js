@@ -13,7 +13,9 @@ import {
   SwipeItem,
   Lazyload,
   Popup,
-  Picker
+  Picker,
+  Image as VanImage,
+  Loading,
 } from 'vant';
 
 Vue.use(Dialog);
@@ -30,3 +32,5 @@ Vue.use(SwipeItem);
 Vue.use(Lazyload);
 Vue.use(Popup);
 Vue.use(Picker);
+Vue.use(VanImage);
+Vue.use(Loading);
