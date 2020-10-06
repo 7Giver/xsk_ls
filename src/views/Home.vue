@@ -2,6 +2,16 @@
   <div class="home" :style="{ 'min-height': pageHeight }">
     <div class="header">
       <Notice :data="noticeList" bgColor="#FAF5DC" />
+      <div class="view_wrap">
+        <div class="item">
+          <p>86</p>
+          <span>今日访问</span>
+        </div>
+        <div class="item">
+          <p>86</p>
+          <span>累计访问</span>
+        </div>
+      </div>
       <div class="member_wrap">
         <div class="content">
           <div class="left">
@@ -13,7 +23,7 @@
             />
             <p>开通VIP尊享7大特权</p>
           </div>
-          <div class="btn">立即开通</div>
+          <div class="btn" @click="goSetToken">立即开通</div>
         </div>
       </div>
       <div class="type_wrap">
@@ -68,6 +78,7 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from "vuex";
 import Notice from "@/components/Notice.vue";
 
 export default {
@@ -156,13 +167,24 @@ export default {
     };
   },
   computed: {
+    ...mapState(['token']),
     pageHeight() {
       let pageHeight = window.innerHeight + "px";
       return pageHeight;
     },
   },
-  mounted() {},
-  methods: {},
+  mounted() {
+
+  },
+  methods: {
+    ...mapMutations({
+      setToken: "setToken",
+    }),
+    goSetToken() {
+      let token = 'dsffjij'
+      this.setToken(token)
+    }
+  },
 };
 </script>
 
@@ -172,6 +194,33 @@ export default {
   .header {
     margin-bottom: 1rem;
     background: #fff;
+    .view_wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 0.9rem 3% 0;
+      .item {
+        width: 45%;
+        color: #fff;
+        text-align: center;
+        padding: 0.6rem 0;
+        border-radius: 0.3rem;
+        p {
+          font-size: 1.4rem;
+          line-height: 1.5rem;
+        }
+        span {
+          font-size: 0.9rem;
+          font-weight: 200;
+        }
+        &:first-child {
+          background: #A2A9EB;
+        }
+        &:last-child {
+          background: #FBA27B;
+        }
+      }
+    }
     .member_wrap {
       background: url(~@/assets/home/member_bg.png) no-repeat center / 100% 100%;
       .content {

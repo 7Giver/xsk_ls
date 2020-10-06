@@ -52,7 +52,7 @@ export default {
     .icon {
       width: 0.9rem;
       height: 0.9rem;
-      margin-right: 0.1rem;
+      margin-right: 0.5rem;
     }
     .van-swipe {
       flex: 1;
